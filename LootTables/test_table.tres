@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="LootTable" format=3 uid="uid://clah7x7nx0dug"]
+
+[ext_resource type="Script" uid="uid://qfipytwtag60" path="res://scripts/LootTable.gd" id="1_64s7j"]
+[ext_resource type="Script" uid="uid://cprftlgm6te84" path="res://scripts/Loot.gd" id="2_ymdsi"]
+[ext_resource type="Resource" uid="uid://cr3pcrjdxirmd" path="res://LootItems/Longsword.tres" id="3_qwpj1"]
+[ext_resource type="Resource" uid="uid://cpjk0tyqwxjfp" path="res://LootItems/PoopArmor.tres" id="4_s0fa4"]
+[ext_resource type="Resource" uid="uid://87uaq30ocrpf" path="res://LootItems/TheOneRing.tres" id="5_p0eyr"]
+[ext_resource type="Resource" uid="uid://bbaa6u3aanlem" path="res://LootItems/mondo_hammer.tres" id="6_g3f10"]
+
+[resource]
+script = ExtResource("1_64s7j")
+name = "test_table"
+table = Dictionary[ExtResource("2_ymdsi"), int]({
+ExtResource("3_qwpj1"): 100,
+ExtResource("4_s0fa4"): 1,
+ExtResource("5_p0eyr"): 1,
+ExtResource("6_g3f10"): 100
+})
+metadata/_custom_type_script = "uid://qfipytwtag60"

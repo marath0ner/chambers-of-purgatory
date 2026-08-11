@@ -1,0 +1,153 @@
+[gd_scene format=3 uid="uid://c0w4kj2uspw8f"]
+
+[ext_resource type="PackedScene" uid="uid://b63pin6xv5egu" path="res://scenes/fat_rattus.glb" id="1_5r8un"]
+[ext_resource type="Script" uid="uid://dm67crgugf0r5" path="res://scripts/Enemy.gd" id="1_kji86"]
+[ext_resource type="AudioStream" uid="uid://dwv80ewuqhf6a" path="res://sounds/sfx/dog-growl.wav" id="3_jv6us"]
+[ext_resource type="AudioStream" uid="uid://b373ti6pcy8ia" path="res://sounds/sfx/dog-snarl.wav" id="4_jvtuq"]
+[ext_resource type="AudioStream" uid="uid://dt17xvgbd6lqj" path="res://sounds/sfx/dog-grumble.wav" id="5_jdshe"]
+[ext_resource type="AudioStream" uid="uid://coun4uqbl8ese" path="res://sounds/sfx/rattus_death.wav" id="6_v2qpm"]
+[ext_resource type="AudioStream" uid="uid://cfq7a1fsr7t5x" path="res://sounds/sfx/rattus_walk.wav" id="7_qmawe"]
+[ext_resource type="AudioStream" uid="uid://cybfchxp8exft" path="res://sounds/sfx/rattus_chitter.ogg" id="8_jv6us"]
+[ext_resource type="FontFile" uid="uid://bif283lpqcmqa" path="res://textures/SazanamiGothic.ttf" id="9_jvtuq"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3suts"]
+radius = 0.44677734
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kji86"]
+size = Vector3(0.74316406, 0.630249, 1.9369965)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3suts"]
+radius = 0.29256108
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_jv6us"]
+playback_mode = 1
+random_pitch = 1.2599211
+random_volume_offset_db = 3.0
+streams_count = 3
+stream_0/stream = ExtResource("3_jv6us")
+stream_1/stream = ExtResource("4_jvtuq")
+stream_2/stream = ExtResource("5_jdshe")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_n815g"]
+radius = 7.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_qmawe"]
+playback_mode = 1
+random_pitch = 1.0472941
+random_volume_offset_db = 0.33
+streams_count = 1
+stream_0/stream = ExtResource("7_qmawe")
+
+[sub_resource type="LabelSettings" id="LabelSettings_n815g"]
+font = ExtResource("9_jvtuq")
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_jvtuq"]
+colors = PackedColorArray(0, 0, 0, 0.49803922, 0, 0, 0, 0.49803922)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_j4n5t"]
+gradient = SubResource("Gradient_jvtuq")
+
+[sub_resource type="Gradient" id="Gradient_jdshe"]
+colors = PackedColorArray(0.5647059, 0, 0, 1, 7.845312e-06, 0.7009158, 0.017622016, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_debvw"]
+gradient = SubResource("Gradient_jdshe")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_n815g"]
+viewport_path = NodePath("SubViewport")
+
+[node name="Rattus" type="CharacterBody3D" unique_id=890867727]
+script = ExtResource("1_kji86")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1820945536]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.013584763, 0.4515937, -0.20573556)
+shape = SubResource("CapsuleShape3D_3suts")
+
+[node name="fat_rattus" parent="." unique_id=589179089 instance=ExtResource("1_5r8un")]
+transform = Transform3D(6.556708e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, 6.556708e-08, 0, 0, 0)
+
+[node name="Hurtbox" type="Area3D" parent="." unique_id=132923766 groups=["Enemy"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox" unique_id=365133733]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0.032226563, 0.43006802, -0.30277368)
+shape = SubResource("BoxShape3D_kji86")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=805152052]
+
+[node name="Hitbox" type="Area3D" parent="." unique_id=1468000016]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox" unique_id=1246048075]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00686197, 0.37627316, -1.0812914)
+shape = SubResource("SphereShape3D_3suts")
+
+[node name="RatHurtSFX" type="AudioStreamPlayer3D" parent="." unique_id=1132869405]
+stream = SubResource("AudioStreamRandomizer_jv6us")
+volume_db = 1.0
+unit_size = 15.0
+
+[node name="RatHurtSFX2" type="AudioStreamPlayer3D" parent="." unique_id=240626102]
+stream = SubResource("AudioStreamRandomizer_jv6us")
+volume_db = 4.0
+unit_size = 15.0
+
+[node name="RatDeathSFX" type="AudioStreamPlayer3D" parent="." unique_id=1531145375]
+stream = ExtResource("6_v2qpm")
+
+[node name="DetectionArea" type="Area3D" parent="." unique_id=761462943]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionArea" unique_id=374119063]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_n815g")
+
+[node name="RatWalkSFX" type="AudioStreamPlayer3D" parent="." unique_id=144716720]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+stream = SubResource("AudioStreamRandomizer_qmawe")
+volume_db = -1.29
+max_polyphony = 3
+
+[node name="RatIdleSFX" type="AudioStreamPlayer3D" parent="." unique_id=610887482]
+stream = ExtResource("8_jv6us")
+volume_db = -15.0
+pitch_scale = 0.6
+max_polyphony = 3
+
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=188037147]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.4, -1.2)
+collision_mask = 2
+debug_shape_custom_color = Color(0.8652426, 0.76956356, 0.12638214, 1)
+debug_shape_thickness = 1
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1126585172]
+transparent_bg = true
+size = Vector2i(256, 44)
+
+[node name="EnemyInfo" type="Label" parent="SubViewport" unique_id=1714652829]
+offset_top = 5.0
+offset_right = 88.0
+offset_bottom = 28.0
+text = "Rattus Lv.1"
+label_settings = SubResource("LabelSettings_n815g")
+
+[node name="HealthBar" type="TextureProgressBar" parent="SubViewport" unique_id=468093325]
+offset_top = 31.0
+offset_right = 254.0
+offset_bottom = 44.0
+value = 100.0
+nine_patch_stretch = true
+texture_under = SubResource("GradientTexture1D_j4n5t")
+texture_progress = SubResource("GradientTexture1D_debvw")
+
+[node name="EnemyUI" type="Sprite3D" parent="." unique_id=658977062]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1, 0)
+visible = false
+transparency = 1.0
+billboard = 1
+texture_filter = 0
+texture = SubResource("ViewportTexture_n815g")
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_exited" from="Hitbox" to="." method="_on_hitbox_body_exited"]
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

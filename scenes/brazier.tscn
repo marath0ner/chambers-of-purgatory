@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://bfx60lj8dbx43"]
+
+[ext_resource type="PackedScene" uid="uid://bw31hj56jl8dn" path="res://scenes/brazier.glb" id="1_d1r1w"]
+[ext_resource type="Texture2D" uid="uid://dtxl3j3bxekq8" path="res://textures/muzzleflash.png" id="2_1k8ij"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1k8ij"]
+transparency = 1
+albedo_color = Color(1, 0.6392157, 0, 1)
+albedo_texture = ExtResource("2_1k8ij")
+emission_enabled = true
+emission = Color(0.6454736, 0, 0.009758798, 1)
+emission_energy_multiplier = 2.0
+billboard_mode = 1
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_x0irm"]
+lifetime_randomness = 0.65
+gravity = Vector3(0, 9.8, 0)
+linear_accel_min = -63.41
+linear_accel_max = 28.919996
+
+[sub_resource type="QuadMesh" id="QuadMesh_xwj88"]
+lightmap_size_hint = Vector2i(7, 7)
+add_uv2 = true
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_d1r1w"]
+height = 2.9499998
+radius = 1.4
+
+[node name="brazier" type="Node3D" unique_id=367582059]
+
+[node name="cage" parent="." unique_id=918919505 instance=ExtResource("1_d1r1w")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+
+[node name="Fire" type="GPUParticles3D" parent="." unique_id=646665664]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+material_override = SubResource("StandardMaterial3D_1k8ij")
+amount = 16
+lifetime = 3.4
+speed_scale = 0.46
+process_material = SubResource("ParticleProcessMaterial_x0irm")
+draw_pass_1 = SubResource("QuadMesh_xwj88")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1232495414]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1561642970]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9802322e-08, 1.525, -2.9802322e-08)
+shape = SubResource("CylinderShape3D_d1r1w")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=975806705]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+light_color = Color(1, 0.45490196, 0, 1)
+light_energy = 7.0
+shadow_enabled = true
+omni_range = 6.0

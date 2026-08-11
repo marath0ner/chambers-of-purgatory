@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Loot" format=3 uid="uid://cr3pcrjdxirmd"]
+
+[ext_resource type="Script" uid="uid://cprftlgm6te84" path="res://scripts/Loot.gd" id="1_ponb8"]
+[ext_resource type="PackedScene" uid="uid://bdm51ttj7pyl6" path="res://scenes/fanged_sword.glb" id="1_sjrsf"]
+[ext_resource type="Texture2D" uid="uid://fjrkb8legsqv" path="res://textures/Placeholder_textures/logo_512x512/logo_pink_512x512.png" id="2_g1u87"]
+
+[resource]
+script = ExtResource("1_ponb8")
+name = "Demon Blood Fanged Sword"
+description = "Forged from the soul of a Blood Demon"
+model = ExtResource("1_sjrsf")
+texture = ExtResource("2_g1u87")
+attack_damage = 20
+attack_speed = 1.0
+metadata/_custom_type_script = "uid://cprftlgm6te84"

@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dgkdmjvs8ebtl"]
+
+[ext_resource type="FontFile" uid="uid://bif283lpqcmqa" path="res://textures/SazanamiGothic.ttf" id="1_bx0w6"]
+
+[node name="Details" type="Node3D" unique_id=1405883657]
+
+[node name="Label3D" type="Label3D" parent="." unique_id=1545807859]
+billboard = 1
+text = "Gang weed"
+font = ExtResource("1_bx0w6")

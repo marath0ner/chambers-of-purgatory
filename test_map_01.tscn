@@ -1,0 +1,308 @@
+[gd_scene format=3 uid="uid://dug70q7rk2qmo"]
+
+[ext_resource type="PackedScene" uid="uid://nfxargnmc20v" path="res://test_map_01.blend" id="1_pjxmh"]
+
+[node name="test_map_01" unique_id=391555218 instance=ExtResource("1_pjxmh")]
+
+[node name="bridge1" parent="." index="0" unique_id=379660368]
+layers = 1
+
+[node name="StaticBody3D" parent="bridge1" index="0" unique_id=1227021068]
+collision_layer = 3
+
+[node name="bridge2" parent="." index="1" unique_id=80403667]
+layers = 1
+
+[node name="StaticBody3D" parent="bridge2" index="0" unique_id=2089920626]
+collision_layer = 3
+
+[node name="bridge3" parent="." index="2" unique_id=284886921]
+layers = 1
+
+[node name="StaticBody3D" parent="bridge3" index="0" unique_id=694501255]
+collision_layer = 3
+
+[node name="bridge3_001" parent="." index="3" unique_id=1131906496]
+layers = 1
+
+[node name="StaticBody3D" parent="bridge3_001" index="0" unique_id=484707594]
+collision_layer = 3
+
+[node name="bridge3_002" parent="." index="4" unique_id=525915223]
+layers = 1
+
+[node name="StaticBody3D" parent="bridge3_002" index="0" unique_id=461539718]
+collision_layer = 3
+
+[node name="bridge3_003" parent="." index="5" unique_id=1008075902]
+layers = 1
+
+[node name="StaticBody3D" parent="bridge3_003" index="0" unique_id=971029]
+collision_layer = 3
+
+[node name="bridge3_004" parent="." index="6" unique_id=220597598]
+layers = 1
+
+[node name="StaticBody3D" parent="bridge3_004" index="0" unique_id=174012039]
+collision_layer = 3
+
+[node name="bridge3_005" parent="." index="7" unique_id=1011271089]
+layers = 1
+
+[node name="StaticBody3D" parent="bridge3_005" index="0" unique_id=2092870821]
+collision_layer = 3
+
+[node name="bridge3_006" parent="." index="8" unique_id=801494866]
+layers = 1
+
+[node name="StaticBody3D" parent="bridge3_006" index="0" unique_id=46178471]
+collision_layer = 3
+
+[node name="bridge3_007" parent="." index="9" unique_id=1040058984]
+layers = 1
+
+[node name="StaticBody3D" parent="bridge3_007" index="0" unique_id=372255998]
+collision_layer = 3
+
+[node name="bridge3_008" parent="." index="10" unique_id=1054052656]
+layers = 1
+
+[node name="StaticBody3D" parent="bridge3_008" index="0" unique_id=962663738]
+collision_layer = 3
+
+[node name="bridge3_009" parent="." index="11" unique_id=500982944]
+layers = 1
+
+[node name="StaticBody3D" parent="bridge3_009" index="0" unique_id=1513924943]
+collision_layer = 3
+
+[node name="bridge3_010" parent="." index="12" unique_id=1444358746]
+layers = 1
+
+[node name="StaticBody3D" parent="bridge3_010" index="0" unique_id=1117355905]
+collision_layer = 3
+
+[node name="bridge3_011" parent="." index="13" unique_id=1990979737]
+layers = 1
+
+[node name="StaticBody3D" parent="bridge3_011" index="0" unique_id=1568196513]
+collision_layer = 3
+
+[node name="bridge3_012" parent="." index="14" unique_id=2069337181]
+layers = 1
+
+[node name="StaticBody3D" parent="bridge3_012" index="0" unique_id=1166278608]
+collision_layer = 3
+
+[node name="bridge3_013" parent="." index="15" unique_id=1703461193]
+layers = 1
+
+[node name="StaticBody3D" parent="bridge3_013" index="0" unique_id=864837509]
+collision_layer = 3
+
+[node name="bridge3_014" parent="." index="16" unique_id=591012324]
+layers = 1
+
+[node name="StaticBody3D" parent="bridge3_014" index="0" unique_id=820411290]
+collision_layer = 3
+
+[node name="bridge3_015" parent="." index="17" unique_id=1869781978]
+layers = 1
+
+[node name="bridge3_016" parent="." index="18" unique_id=1628430331]
+layers = 1
+
+[node name="StaticBody3D" parent="bridge3_016" index="0" unique_id=1762254319]
+collision_layer = 3
+
+[node name="bridge4" parent="." index="19" unique_id=741756919]
+layers = 1
+
+[node name="StaticBody3D" parent="bridge4" index="0" unique_id=1666839323]
+collision_layer = 3
+
+[node name="bridge31" parent="." index="20" unique_id=175316228]
+layers = 1
+
+[node name="StaticBody3D" parent="bridge31" index="0" unique_id=1334456694]
+collision_layer = 3
+
+[node name="bridge" parent="." index="21" unique_id=483485874]
+layers = 1
+
+[node name="StaticBody3D" parent="bridge" index="0" unique_id=1114341084]
+collision_layer = 3
+
+[node name="Cube2" parent="." index="22" unique_id=589466908]
+layers = 1
+
+[node name="StaticBody3D" parent="Cube2" index="0" unique_id=870244224]
+collision_layer = 3
+
+[node name="Cube11" parent="." index="23" unique_id=877085871]
+layers = 1
+
+[node name="StaticBody3D" parent="Cube11" index="0" unique_id=108820752]
+collision_layer = 3
+
+[node name="Cube" parent="." index="24" unique_id=918114575]
+layers = 1
+
+[node name="StaticBody3D" parent="Cube" index="0" unique_id=1319368692]
+collision_layer = 3
+
+[node name="Cube_001" parent="." index="25" unique_id=2140771574]
+layers = 1
+
+[node name="StaticBody3D" parent="Cube_001" index="0" unique_id=1338819168]
+collision_layer = 3
+
+[node name="Cube_003" parent="." index="26" unique_id=1388991459]
+layers = 1
+
+[node name="StaticBody3D" parent="Cube_003" index="0" unique_id=841948061]
+collision_layer = 3
+
+[node name="Cube_004" parent="." index="27" unique_id=1060963122]
+layers = 1
+
+[node name="StaticBody3D" parent="Cube_004" index="0" unique_id=1889230099]
+collision_layer = 3
+
+[node name="Cube_005" parent="." index="28" unique_id=1681238960]
+layers = 1
+
+[node name="StaticBody3D" parent="Cube_005" index="0" unique_id=1134128120]
+collision_layer = 3
+
+[node name="Cube_006" parent="." index="29" unique_id=193117260]
+layers = 1
+
+[node name="StaticBody3D" parent="Cube_006" index="0" unique_id=1018300458]
+collision_layer = 3
+
+[node name="Cube_007" parent="." index="30" unique_id=2086207251]
+layers = 1
+
+[node name="StaticBody3D" parent="Cube_007" index="0" unique_id=501445582]
+collision_layer = 3
+
+[node name="Cube_0044" parent="." index="31" unique_id=1727650095]
+layers = 1
+
+[node name="StaticBody3D" parent="Cube_0044" index="0" unique_id=622669699]
+collision_layer = 3
+
+[node name="Cube_0051" parent="." index="32" unique_id=92261234]
+layers = 1
+
+[node name="StaticBody3D" parent="Cube_0051" index="0" unique_id=173371421]
+collision_layer = 3
+
+[node name="Cube_0052" parent="." index="33" unique_id=605000073]
+layers = 1
+
+[node name="StaticBody3D" parent="Cube_0052" index="0" unique_id=771058618]
+collision_layer = 3
+
+[node name="Cube_0066" parent="." index="34" unique_id=77670962]
+layers = 1
+
+[node name="StaticBody3D" parent="Cube_0066" index="0" unique_id=2002989701]
+collision_layer = 3
+
+[node name="Cube_0067" parent="." index="35" unique_id=1856372783]
+layers = 1
+
+[node name="StaticBody3D" parent="Cube_0067" index="0" unique_id=1495055263]
+collision_layer = 3
+
+[node name="Cube_00111" parent="." index="36" unique_id=970239286]
+layers = 1
+
+[node name="StaticBody3D" parent="Cube_00111" index="0" unique_id=973576045]
+collision_layer = 3
+
+[node name="Cube_00222" parent="." index="37" unique_id=1217863076]
+layers = 1
+
+[node name="StaticBody3D" parent="Cube_00222" index="0" unique_id=1714099172]
+collision_layer = 3
+
+[node name="Cube_00511" parent="." index="38" unique_id=235742432]
+layers = 1
+
+[node name="StaticBody3D" parent="Cube_00511" index="0" unique_id=164463861]
+collision_layer = 3
+
+[node name="Cube_00671" parent="." index="39" unique_id=1682246347]
+layers = 1
+
+[node name="StaticBody3D" parent="Cube_00671" index="0" unique_id=415597132]
+collision_layer = 3
+
+[node name="Cube_00672" parent="." index="40" unique_id=1998395149]
+layers = 1
+
+[node name="StaticBody3D" parent="Cube_00672" index="0" unique_id=2133959673]
+collision_layer = 3
+
+[node name="Cube_001112" parent="." index="41" unique_id=1431569174]
+layers = 1
+
+[node name="StaticBody3D" parent="Cube_001112" index="0" unique_id=1618450266]
+collision_layer = 3
+
+[node name="Cube_002221" parent="." index="42" unique_id=1291269826]
+layers = 1
+
+[node name="StaticBody3D" parent="Cube_002221" index="0" unique_id=1894686786]
+collision_layer = 3
+
+[node name="Cube_0011121" parent="." index="43" unique_id=1122905397]
+layers = 1
+
+[node name="StaticBody3D" parent="Cube_0011121" index="0" unique_id=1418876500]
+collision_layer = 3
+
+[node name="Cube_0011122" parent="." index="44" unique_id=1849189805]
+layers = 1
+
+[node name="StaticBody3D" parent="Cube_0011122" index="0" unique_id=87259250]
+collision_layer = 3
+
+[node name="Cubeey2" parent="." index="45" unique_id=1195355333]
+layers = 1
+
+[node name="StaticBody3D" parent="Cubeey2" index="0" unique_id=783357022]
+collision_layer = 3
+
+[node name="Cubeey21" parent="." index="46" unique_id=1170696996]
+layers = 1
+
+[node name="StaticBody3D" parent="Cubeey21" index="0" unique_id=1923574976]
+collision_layer = 3
+
+[node name="Cubeey22" parent="." index="47" unique_id=992008106]
+layers = 1
+
+[node name="StaticBody3D" parent="Cubeey22" index="0" unique_id=148793820]
+collision_layer = 3
+
+[node name="Cubeey" parent="." index="48" unique_id=1468205648]
+layers = 1
+
+[node name="StaticBody3D" parent="Cubeey" index="0" unique_id=1053945098]
+collision_layer = 3
+
+[node name="level1" parent="." index="49" unique_id=282170624]
+layers = 1
+
+[node name="StaticBody3D" parent="level1" index="0" unique_id=2755387]
+collision_layer = 3
+
+[node name="level12" parent="." index="50" unique_id=289861060]
+layers = 1
+
+[node name="StaticBody3D" parent="level12" index="0" unique_id=1865317995]
+collision_layer = 3

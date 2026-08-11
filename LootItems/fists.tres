@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Loot" format=3 uid="uid://dhode4te5pw4w"]
+
+[ext_resource type="Script" uid="uid://cprftlgm6te84" path="res://scripts/Loot.gd" id="1_up1sj"]
+
+[resource]
+script = ExtResource("1_up1sj")
+name = "Fists"
+description = "Old reliable."
+attack_damage = 100
+metadata/_custom_type_script = "uid://cprftlgm6te84"

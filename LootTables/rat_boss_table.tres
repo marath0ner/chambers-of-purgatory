@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="LootTable" format=3 uid="uid://csc120sl23b2u"]
+
+[ext_resource type="Script" uid="uid://qfipytwtag60" path="res://scripts/LootTable.gd" id="1_m058s"]
+[ext_resource type="Script" uid="uid://cprftlgm6te84" path="res://scripts/Loot.gd" id="2_umjx0"]
+[ext_resource type="Resource" uid="uid://cpjk0tyqwxjfp" path="res://LootItems/PoopArmor.tres" id="3_3rkxx"]
+[ext_resource type="Resource" uid="uid://87uaq30ocrpf" path="res://LootItems/TheOneRing.tres" id="4_cg4wh"]
+
+[resource]
+script = ExtResource("1_m058s")
+name = "rat_boss"
+table = Dictionary[ExtResource("2_umjx0"), int]({
+ExtResource("3_3rkxx"): 5,
+ExtResource("4_cg4wh"): 10
+})
+metadata/_custom_type_script = "uid://qfipytwtag60"

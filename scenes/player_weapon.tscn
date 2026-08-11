@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://kuduhtymboq5"]
+
+[ext_resource type="Script" uid="uid://cw0qm2loc4ii3" path="res://scripts/WeaponClass.gd" id="1_maq6x"]
+
+[node name="PlayerWeapon" type="Node3D" unique_id=723661750]
+script = ExtResource("1_maq6x")

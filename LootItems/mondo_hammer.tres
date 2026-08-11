@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Loot" format=3 uid="uid://bbaa6u3aanlem"]
+
+[ext_resource type="PackedScene" uid="uid://br61ybyuoyo57" path="res://scenes/brick_hammer.glb" id="1_fpvx3"]
+[ext_resource type="Script" uid="uid://cprftlgm6te84" path="res://scripts/Loot.gd" id="2_nmmi1"]
+
+[resource]
+script = ExtResource("2_nmmi1")
+name = "Mondo Hammer"
+rarity = 1
+description = "A single piece of stone carved in the shape of a hammer."
+model = ExtResource("1_fpvx3")
+attack_damage = 40
+attack_speed = 0.8
+metadata/_custom_type_script = "uid://cprftlgm6te84"

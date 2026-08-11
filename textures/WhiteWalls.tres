@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bd4qxigcs8qd5"]
+
+[ext_resource type="Texture2D" uid="uid://cwpn2an5axulm" path="res://textures/brick_hammer_Tileable9k.png" id="1_1j8ju"]
+
+[resource]
+albedo_texture = ExtResource("1_1j8ju")
+uv1_scale = Vector3(0.1, -0.1, 0.1)
+uv1_triplanar = true

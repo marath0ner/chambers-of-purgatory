@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://cy353wg7smsfn"]
+
+[ext_resource type="Script" uid="uid://b5cewx3cppi6n" path="res://scripts/loot_drop.gd" id="1_inrc7"]
+[ext_resource type="AudioStream" uid="uid://i1ynadtrnvqj" path="res://sounds/sfx/itemdrop.ogg" id="3_4pj20"]
+[ext_resource type="PackedScene" uid="uid://dgkdmjvs8ebtl" path="res://scenes/LootDropUI.tscn" id="3_pun1e"]
+[ext_resource type="FontFile" uid="uid://bif283lpqcmqa" path="res://textures/SazanamiGothic.ttf" id="4_4pj20"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4pj20"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_pun1e"]
+font = ExtResource("4_4pj20")
+font_size = 20
+
+[node name="LootDrop" type="Node3D" unique_id=1564099530]
+script = ExtResource("1_inrc7")
+
+[node name="Details" parent="." unique_id=1405883657 instance=ExtResource("3_pun1e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5184866, 0)
+
+[node name="Area3D" type="Area3D" parent="." unique_id=115490061]
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1986390862]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.53513813, 0)
+shape = SubResource("BoxShape3D_4pj20")
+
+[node name="DropSFX" type="AudioStreamPlayer3D" parent="." unique_id=1404800577]
+stream = ExtResource("3_4pj20")
+volume_db = -5.0
+
+[node name="InteractPrompt" type="Control" parent="." unique_id=119858836]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="InteractPrompt" unique_id=2119369599]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.0
+offset_top = -11.5
+offset_right = 73.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Press [E] to pick up"
+label_settings = SubResource("LabelSettings_pun1e")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
+
+[editable path="Details"]
