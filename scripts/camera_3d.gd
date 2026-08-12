@@ -16,5 +16,6 @@ func _camera_shake():
 
 		self.rotation = initial_rotation + offset
 		elapsed_time += get_process_delta_time()
-		await get_tree().process_frame
+		if is_inside_tree():
+			await get_tree().process_frame
 	self.rotation = initial_rotation

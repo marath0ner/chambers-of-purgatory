@@ -86,6 +86,7 @@ func take_damage(damage : int, force : Vector3) -> void:
 		knockback = force
 	print("I took ", damage, " damage. I have ", health, " HP.")
 	
+	animation_player.play("Damaged")
 	rat_hurt_sfx.play()
 	rat_hurt_sfx_2.play()
 
@@ -112,9 +113,10 @@ func _on_hitbox_body_entered(body: Node3D) -> void:
 		is_colliding = true
 		var player = body
 		while is_colliding:
-			await get_tree().create_timer(0.7).timeout
+			animation_player.play("Attack")
+			await get_tree().create_timer(.7).timeout
 			if is_colliding:
-				print("I chomp again")
+				animation_player.play("Attack")
 				player.take_damage(8.0)
 
 func _on_hitbox_body_exited(body: Node3D) -> void:
@@ -139,6 +141,7 @@ func try_chase():
 				current_state = State.CHASE
 				show_enemy_ui()
 				rat_idle_sfx.play()
+
 
 func show_enemy_ui():
 	var tween = create_tween()

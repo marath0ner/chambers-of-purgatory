@@ -12,6 +12,4 @@ func add_item(item : Loot):
 
 
 func display_inventory():
-	for item in AcquiredLoot:
-		print(item.name)
 	self.show()

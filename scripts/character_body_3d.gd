@@ -18,6 +18,9 @@ extends CharacterBody3D
 @onready var debug_text: Label = $Bars/Control/DebugText
 @onready var debug_text_2: Label = $Bars/Control/DebugText2
 @onready var inventory: Inventory = $Bars/Inventory
+@onready var sword_slice_sfx: AudioStreamPlayer3D = $AudioManager/SwordSliceSFX
+@onready var player_hurt_sfx: AudioStreamPlayer3D = $AudioManager/PlayerHurtSFX
+@onready var pressure_plate: PressurePlate = $"../PressurePlate"
 
 
 const SPEED = 5.0
@@ -172,9 +175,8 @@ func start_attack():
 
 func take_damage(damage : float) -> void:
 	health -= damage
+	player_hurt_sfx.play()
 	damage_indicator.fade_out()
-	print("Damage taken: ", damage)
-	print("Health is: ", health)
 
 func try_combo():
 	if queued_attack and hit_number == 1 and stamina > 0:
@@ -232,6 +234,7 @@ func pickup_item(item: Loot):
 func _on_hitbox_area_entered(area: Area3D) -> void:
 	if area.is_in_group("Enemy"):
 		var enemy = area.get_parent()
+		sword_slice_sfx.play()
 		if enemy.has_method("take_damage"):
 			weapon_particles.restart()
 			%Camera3D._camera_shake()
@@ -298,3 +301,7 @@ func _handle_ground_physics():
 func _on_killzone_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Player"):
 		take_damage(1000)
+
+
+func _on_pressure_plate_body_entered(body: Node3D) -> void:
+	pressure_plate.activate()

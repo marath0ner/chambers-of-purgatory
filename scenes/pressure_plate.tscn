@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://d1iwp2blf36jv"]
+
+[ext_resource type="Material" uid="uid://bd4qxigcs8qd5" path="res://textures/WhiteWalls.tres" id="1_ct5vs"]
+[ext_resource type="Script" uid="uid://dt2oey72gpgnk" path="res://scenes/pressure_plate.gd" id="1_xtofl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n815g"]
+size = Vector3(1, 1.5898132, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_n815g"]
+lightmap_size_hint = Vector2i(14, 21)
+material = ExtResource("1_ct5vs")
+
+[node name="PressurePlate" type="Node3D" unique_id=2018925426]
+transform = Transform3D(2, 0, 0, 0, 0.2, 0, 0, 0, 2, 0, 0, 0)
+script = ExtResource("1_xtofl")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=518584279]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=701048972]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.29490662, 0)
+shape = SubResource("BoxShape3D_n815g")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D" unique_id=1690523466]
+mesh = SubResource("BoxMesh_n815g")
