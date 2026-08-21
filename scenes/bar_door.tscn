@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dk2uvis5vdqta"]
+
+[ext_resource type="PackedScene" uid="uid://4xqba3dcji31" path="res://scenes/barred_gate.glb" id="1_g3n7j"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5wthp"]
+size = Vector3(0.30029297, 0.90000004, 0.049230956)
+
+[node name="Node3D" type="Node3D" unique_id=243780532]
+
+[node name="barred_gate" parent="." unique_id=1566605674 instance=ExtResource("1_g3n7j")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=597339086]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=132838756]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.005126953, 0.45000002, 0.003387455)
+shape = SubResource("BoxShape3D_5wthp")

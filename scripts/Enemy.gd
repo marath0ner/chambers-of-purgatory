@@ -1,4 +1,5 @@
 extends CharacterBody3D
+class_name Rattus
 const SPEED = 5
 @onready var health : int = 100
 @export var loot_scene : PackedScene
@@ -23,7 +24,7 @@ enum State { IDLE, CHASE }
 var knockback := Vector3.ZERO
 var direction : Vector3
 var is_colliding := false
-var current_state = State
+var current_state: State
 var player_in_range : bool = false
 
 func _ready() -> void:
@@ -84,7 +85,6 @@ func take_damage(damage : int, force : Vector3) -> void:
 	
 	if health > 0:
 		knockback = force
-	print("I took ", damage, " damage. I have ", health, " HP.")
 	
 	animation_player.play("Damaged")
 	rat_hurt_sfx.play()
@@ -93,10 +93,8 @@ func take_damage(damage : int, force : Vector3) -> void:
 func die():
 	rat_death_sfx.reparent(%AudioManager)
 	rat_death_sfx.play(.39)
-	print("TN died.")
 	drop_loot()
 	queue_free()
-	# NEXT UP: ADD LOOTSTUFFS. WHEN ENEMY DIES, CALL GLOBAL LOOT SCRIPT. ROLL AN ITEM THEN DROP IT ON DEATH
 
 func drop_loot():
 	var loot_instance = loot_scene.instantiate()
@@ -106,7 +104,6 @@ func drop_loot():
 		loot_instance.loot_data = rolled_loot
 		loot_instance.global_position = global_position + Vector3(0,0.5,0)
 		get_tree().current_scene.add_child(loot_instance)
-		print(rolled_loot.name, "\n", rolled_loot.Rarity.find_key(rolled_loot.rarity), " ", rolled_loot.Type.find_key(rolled_loot.type), "\n", rolled_loot.description)
 
 func _on_hitbox_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Player"):
@@ -121,7 +118,6 @@ func _on_hitbox_body_entered(body: Node3D) -> void:
 
 func _on_hitbox_body_exited(body: Node3D) -> void:
 	if body.is_in_group("Player"):
-		print("Player left")
 		is_colliding = false
 
 func _on_detection_area_body_entered(body: Node3D) -> void:
@@ -132,16 +128,22 @@ func _on_detection_area_body_exited(body: Node3D) -> void:
 	if body.is_in_group("Player"):
 		player_in_range = false
 		rat_walk_sfx.stop()
-		current_state = State.IDLE
+		change_state(State.IDLE)
 
 func try_chase():
 	if player_in_range:
 		if !ray_cast_3d.is_colliding():
 			if current_state != State.CHASE:
-				current_state = State.CHASE
-				show_enemy_ui()
+				change_state(State.CHASE)
 				rat_idle_sfx.play()
 
+func change_state(new_state : State):
+	match new_state:
+		State.IDLE:
+			current_state = State.IDLE
+		State.CHASE:
+			show_enemy_ui()
+			current_state = State.CHASE
 
 func show_enemy_ui():
 	var tween = create_tween()

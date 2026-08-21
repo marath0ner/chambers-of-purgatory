@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://mwtxu3mxp2m"]
+
+[ext_resource type="Script" uid="uid://bb0agyyaj4eys" path="res://scenes/press.gd" id="1_no7md"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_n815g"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n815g"]
+size = Vector3(1, 0.6, 1)
+
+[node name="press" type="Node3D" unique_id=1958152650]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+script = ExtResource("1_no7md")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=787560674]
+transform = Transform3D(1, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, -0.15467986, 0)
+mesh = SubResource("BoxMesh_n815g")
+
+[node name="Area3D" type="Area3D" parent="MeshInstance3D" unique_id=110938179]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/Area3D" unique_id=501628953]
+transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 0.99999976, 0, -0.29999995, 0)
+shape = SubResource("BoxShape3D_n815g")
+debug_color = Color(1, 0, 0, 1)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=174109792]
+transform = Transform3D(0.1, 0, 0, 0, 3, 0, 0, 0, 0.1, 0, 1.359465, 0)
+mesh = SubResource("BoxMesh_n815g")
+
+[connection signal="body_entered" from="MeshInstance3D/Area3D" to="." method="_on_area_3d_body_entered"]

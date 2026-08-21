@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cprftlgm6te84" path="res://scripts/Loot.gd" id="2_ymdsi"]
 [ext_resource type="Resource" uid="uid://cr3pcrjdxirmd" path="res://LootItems/Longsword.tres" id="3_qwpj1"]
 [ext_resource type="Resource" uid="uid://cpjk0tyqwxjfp" path="res://LootItems/PoopArmor.tres" id="4_s0fa4"]
-[ext_resource type="Resource" uid="uid://87uaq30ocrpf" path="res://LootItems/TheOneRing.tres" id="5_p0eyr"]
+[ext_resource type="Resource" uid="uid://87uaq30ocrpf" path="res://LootItems/Wings.tres" id="5_p0eyr"]
 [ext_resource type="Resource" uid="uid://bbaa6u3aanlem" path="res://LootItems/mondo_hammer.tres" id="6_g3f10"]
 
 [resource]

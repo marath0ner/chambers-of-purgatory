@@ -21,10 +21,10 @@ extends CharacterBody3D
 @onready var sword_slice_sfx: AudioStreamPlayer3D = $AudioManager/SwordSliceSFX
 @onready var player_hurt_sfx: AudioStreamPlayer3D = $AudioManager/PlayerHurtSFX
 @onready var pressure_plate: PressurePlate = $"../PressurePlate"
+@onready var press: RatPress = $"../press"
 
 
 const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
 const look_sens = .001
 const SPRINT_SPEED = 7.0
 const WALK_SPEED = 3.0
@@ -34,6 +34,7 @@ const HEADBOB_FREQUENCY = 2.4
 
 enum State { IDLE, WALKING, SPRINTING, JUMPING, FALLING }
 
+var jump_velocity = 4.5
 var headbob_time := 0.0
 var health : float = 100.0
 var max_health : float = 100.0
@@ -64,16 +65,22 @@ func _ready() -> void:
 	debug_text.text = str(%Camera3D.transform.origin)
 	debug_text_2.text = str(current_state)
 	inventory.add_item(player_weapon.weapon_data)
+	press.enemy_squished.connect(open_door)
 	
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
-		velocity += get_gravity() * delta
+		if inventory.has("Wings"):
+			velocity += get_gravity() * delta * .1
+		else:
+			velocity += get_gravity() * delta
 		is_walking = false
 
 	# Handle jump.
 	if Input.is_action_just_pressed("Jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+		if inventory.has("Wings"):
+			jump_velocity = 5.5
+		velocity.y = jump_velocity
 	
 	if (Input.is_action_just_pressed("Attack")) or (Input.is_action_pressed("Attack")):
 		if is_attacking:
@@ -257,18 +264,17 @@ func _handle_ground_physics():
 			if is_on_floor():
 				is_walking = true
 				current_state = State.WALKING
-			if Input.is_action_pressed("Sprint"):
-				if stamina > 0:
-					current_state = State.SPRINTING
-					walk_sfx.pitch_scale = 1.2
-					velocity.x = direction.x * SPRINT_SPEED
-					velocity.z = direction.z * SPRINT_SPEED
-					adjust_stamina(.5)
-					
+				if Input.is_action_pressed("Sprint"):
+					if stamina > 0:
+						current_state = State.SPRINTING
+						walk_sfx.pitch_scale = 1.2
+						velocity.x = direction.x * SPRINT_SPEED
+						velocity.z = direction.z * SPRINT_SPEED
+						adjust_stamina(.5)
+					else:
+						walk_sfx.pitch_scale = 0.8
 				else:
 					walk_sfx.pitch_scale = 0.8
-			else:
-				walk_sfx.pitch_scale = 0.8
 			if Input.is_action_just_pressed("Backward"):
 				velocity.x = move_toward(velocity.x, 0, WALK_SPEED)
 				velocity.z = move_toward(velocity.z, 0, WALK_SPEED)
@@ -298,6 +304,8 @@ func _handle_ground_physics():
 		velocity.z = move_toward(velocity.z, 0, 0.08)
 		current_state = State.IDLE
 
+# TODO: overhaul movement code. it's too rigid right now.
+
 func _on_killzone_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Player"):
 		take_damage(1000)
@@ -305,3 +313,6 @@ func _on_killzone_body_entered(body: Node3D) -> void:
 
 func _on_pressure_plate_body_entered(body: Node3D) -> void:
 	pressure_plate.activate()
+
+func open_door():
+	print("The way has opened.")

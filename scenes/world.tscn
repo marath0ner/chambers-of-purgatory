@@ -47,6 +47,9 @@
 [ext_resource type="AudioStream" uid="uid://cujkr846t1g5n" path="res://sounds/sfx/player_sounds/slightscream-09.wav" id="30_e6ckp"]
 [ext_resource type="AudioStream" uid="uid://gn2njcmqsisx" path="res://sounds/sfx/player_sounds/slightscream-10.wav" id="31_mvg0v"]
 [ext_resource type="PackedScene" uid="uid://d1iwp2blf36jv" path="res://scenes/pressure_plate.tscn" id="47_4wdv8"]
+[ext_resource type="PackedScene" uid="uid://mwtxu3mxp2m" path="res://scenes/press.tscn" id="48_d46x8"]
+[ext_resource type="PackedScene" uid="uid://dk2uvis5vdqta" path="res://scenes/bar_door.tscn" id="49_3l05q"]
+[ext_resource type="Script" uid="uid://kmbyg8mmlu72" path="res://scenes/bar_door.gd" id="50_x28ej"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fj7yv"]
 sky_top_color = Color(0.7483984, 0.9025327, 0.99999994, 1)
@@ -1226,28 +1229,43 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -8, 0.5, 3)
 loot_scene = ExtResource("6_qfnet")
 loot_table = ExtResource("7_w7kh3")
 
-[node name="Rattus4" parent="Enemies" unique_id=1701457085 instance=ExtResource("4_i7141")]
+[node name="Rattus4" parent="Enemies" unique_id=1701457085 groups=["TrapRatti"] instance=ExtResource("4_i7141")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -47, -22.576107, 51)
 loot_scene = ExtResource("6_qfnet")
 loot_table = ExtResource("7_w7kh3")
 
-[node name="Rattus11" parent="Enemies" unique_id=1611786782 instance=ExtResource("4_i7141")]
+[node name="Rattus11" parent="Enemies" unique_id=1611786782 groups=["TrapRatti"] instance=ExtResource("4_i7141")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -34, -22.576107, 51)
 loot_scene = ExtResource("6_qfnet")
 loot_table = ExtResource("7_w7kh3")
 
-[node name="Rattus12" parent="Enemies" unique_id=354515641 instance=ExtResource("4_i7141")]
+[node name="Rattus12" parent="Enemies" unique_id=354515641 groups=["TrapRatti"] instance=ExtResource("4_i7141")]
 transform = Transform3D(0.99999994, 0, -1.7320509, 0, 2, 0, 1.7320509, 0, 0.99999994, -48, -22.576107, 43)
 loot_scene = ExtResource("6_qfnet")
 loot_table = ExtResource("7_w7kh3")
 
-[node name="Rattus13" parent="Enemies" unique_id=510243445 instance=ExtResource("4_i7141")]
-transform = Transform3D(0.99999994, 0, -1.7320509, 0, 2, 0, 1.7320509, 0, 0.99999994, -48, -22.576107, 36)
+[node name="Rattus13" parent="Enemies" unique_id=510243445 groups=["TrapRatti"] instance=ExtResource("4_i7141")]
+transform = Transform3D(1.9318516, 0, -0.5176382, 0, 2, 0, 0.5176382, 0, 1.9318516, -48, -22.576107, 36)
 loot_scene = ExtResource("6_qfnet")
 loot_table = ExtResource("7_w7kh3")
 
-[node name="Rattus14" parent="Enemies" unique_id=1406484579 instance=ExtResource("4_i7141")]
-transform = Transform3D(2.3841858e-07, 0, 2, 0, 2, 0, -2, 0, 2.3841858e-07, -30, -22.576107, 39)
+[node name="Rattus14" parent="Enemies" unique_id=1406484579 groups=["TrapRatti"] instance=ExtResource("4_i7141")]
+transform = Transform3D(2.3841858e-07, 0, 2, 0, 2, 0, -2, 0, 2.3841858e-07, -30, -22.576107, 41)
+loot_scene = ExtResource("6_qfnet")
+loot_table = ExtResource("7_w7kh3")
+
+[node name="Rattus15" parent="Enemies" unique_id=680216386 groups=["TrapRatti"] instance=ExtResource("4_i7141")]
+transform = Transform3D(1.0000002, 0, 1.7320507, 0, 2, 0, -1.7320507, 0, 1.0000002, -41, -22.576107, 50)
+loot_scene = ExtResource("6_qfnet")
+loot_table = ExtResource("7_w7kh3")
+
+[node name="Rattus16" parent="Enemies" unique_id=68124686 groups=["TrapRatti"] instance=ExtResource("4_i7141")]
+transform = Transform3D(-1.0000001, 0, -1.7320508, 0, 2, 0, 1.7320508, 0, -1.0000001, -46, -22.576107, 24)
+loot_scene = ExtResource("6_qfnet")
+loot_table = ExtResource("7_w7kh3")
+
+[node name="Rattus17" parent="Enemies" unique_id=36184424 groups=["TrapRatti"] instance=ExtResource("4_i7141")]
+transform = Transform3D(-1.0000001, 0, -1.7320508, 0, 2, 0, 1.7320508, 0, -1.0000001, -39, -22.576107, 39)
 loot_scene = ExtResource("6_qfnet")
 loot_table = ExtResource("7_w7kh3")
 
@@ -1321,10 +1339,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46, -80, 36)
 loot_data = ExtResource("27_ts3gi")
 
 [node name="PressurePlate" parent="." unique_id=2018925426 instance=ExtResource("47_4wdv8")]
-transform = Transform3D(2, 0, 0, 0, 0.2, 0, 0, 0, 2, 1, 1, 9)
+transform = Transform3D(2, 0, 0, 0, 0.2, 0, 0, 0, 2, -30, -22.076107, 23)
 
 [node name="Area3D" parent="PressurePlate" index="0" unique_id=518584279]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="." unique_id=1373315812]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36, -4, 41)
+light_color = Color(1, 0.11764706, 0.25882354, 1)
+light_energy = 14.312
+light_indirect_energy = 16.0
+omni_range = 11.876
+
+[node name="press" parent="." unique_id=1958152650 instance=ExtResource("48_d46x8")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 36, -1.4938669, 42)
+
+[node name="barred_door" parent="." unique_id=243780532 instance=ExtResource("49_3l05q")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 48.0127, -13.517267, 58.57399)
+script = ExtResource("50_x28ej")
 
 [connection signal="area_entered" from="CharacterBody3D/CameraRig/PlayerWeapon/Hitbox" to="CharacterBody3D" method="_on_hitbox_area_entered"]
 [connection signal="body_entered" from="Killzone" to="CharacterBody3D" method="_on_killzone_body_entered"]

@@ -2,6 +2,7 @@
 
 [ext_resource type="Material" uid="uid://bd4qxigcs8qd5" path="res://textures/WhiteWalls.tres" id="1_ct5vs"]
 [ext_resource type="Script" uid="uid://dt2oey72gpgnk" path="res://scenes/pressure_plate.gd" id="1_xtofl"]
+[ext_resource type="AudioStream" uid="uid://wjq0jkvd0owc" path="res://sounds/sfx/Socapex - small knock.wav" id="3_r34r6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_n815g"]
 size = Vector3(1, 1.5898132, 1)
@@ -22,3 +23,6 @@ shape = SubResource("BoxShape3D_n815g")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D" unique_id=1690523466]
 mesh = SubResource("BoxMesh_n815g")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1036564542]
+stream = ExtResource("3_r34r6")

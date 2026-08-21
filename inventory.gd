@@ -10,6 +10,11 @@ func add_item(item : Loot):
 	item_label.text = str(item.name)
 	v_box_container.add_child(item_label)
 
+func has(item_name : String) -> bool:
+	for n in AcquiredLoot:
+		if item_name == n.name:
+			return true
+	return false
 
 func display_inventory():
 	self.show()

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Loot" format=3 uid="uid://87uaq30ocrpf"]
+
+[ext_resource type="Script" uid="uid://cprftlgm6te84" path="res://scripts/Loot.gd" id="1_8exwv"]
+[ext_resource type="Texture2D" uid="uid://xt8ele5hkdbw" path="res://textures/Placeholder_textures/logo_512x512/logo_yellow_512x512.png" id="2_pgjug"]
+
+[resource]
+script = ExtResource("1_8exwv")
+name = "Wings"
+type = 2
+rarity = 3
+description = "An angel gets its wings."
+texture = ExtResource("2_pgjug")
+metadata/_custom_type_script = "uid://cprftlgm6te84"
