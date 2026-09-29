@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Loot" format=3 uid="uid://bc2l7iy5wclbo"]
+
+[ext_resource type="Script" uid="uid://cprftlgm6te84" path="res://scripts/Loot.gd" id="1_k5n41"]
+
+[resource]
+script = ExtResource("1_k5n41")
+name = "Health Potion"
+type = 2
+rarity = 1
+description = "Replenishes health points"
+metadata/_custom_type_script = "uid://cprftlgm6te84"

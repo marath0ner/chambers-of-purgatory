@@ -1,4 +1,6 @@
 extends CharacterBody3D
+@onready var main_menu: Node3D = %MainMenu
+
 @onready var camera_3d: Camera3D = %Camera3D
 @onready var hitbox: Area3D = %Hitbox
 @onready var player_weapon: WeaponClass = %PlayerWeapon
@@ -20,8 +22,11 @@ extends CharacterBody3D
 @onready var inventory: Inventory = $Bars/Inventory
 @onready var sword_slice_sfx: AudioStreamPlayer3D = $AudioManager/SwordSliceSFX
 @onready var player_hurt_sfx: AudioStreamPlayer3D = $AudioManager/PlayerHurtSFX
-@onready var pressure_plate: PressurePlate = $"../PressurePlate"
+@onready var pressure_plate: PressurePlate = $"../RatPlate"
 @onready var press: RatPress = $"../press"
+@onready var fall_damage_timer: Timer = $FallDamageTimer
+@onready var win_con: PressurePlate = $"../Node3D/WinCon"
+@onready var win_screen: CanvasLayer = $"../WinScreen"
 
 
 const SPEED = 5.0
@@ -43,9 +48,9 @@ var paused := false
 var can_attack := true
 var weapon_damage
 var stamina : float = 100.0
-var max_stamina : float = 1000.0 # default 100
+var max_stamina : float = 100.0 # default 100
 var stamina_just_used : bool = false
-var stamina_regen_rate : float = 50.0 # default 25
+var stamina_regen_rate : float = 25.0 # default 25
 var stamina_regen_timer : SceneTreeTimer = null
 var is_walking := false
 var hit_number := 0
@@ -54,88 +59,83 @@ var is_attacking := false
 var waiting_for_animation_finish := false
 var can_sprint := true
 var current_state = State
+var can_control := false
+var can_climb := false
 
 func _ready() -> void:
 	hitbox.monitoring = true
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	mesh_instance_3d.set_layer_mask_value(1, false)
 	mesh_instance_3d.set_layer_mask_value(2, true)
 	weapon_damage = %PlayerWeapon.weapon_damage
 	current_state = State.IDLE
-	debug_text.text = str(%Camera3D.transform.origin)
-	debug_text_2.text = str(current_state)
 	inventory.add_item(player_weapon.weapon_data)
 	press.enemy_squished.connect(open_door)
 	
+	
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
-	if not is_on_floor():
-		if inventory.has("Wings"):
-			velocity += get_gravity() * delta * .1
+	if can_control:
+		if !can_climb:
+			handle_gravity(delta)
 		else:
-			velocity += get_gravity() * delta
-		is_walking = false
+			fall_damage_timer.stop()
 
-	# Handle jump.
-	if Input.is_action_just_pressed("Jump") and is_on_floor():
-		if inventory.has("Wings"):
-			jump_velocity = 5.5
-		velocity.y = jump_velocity
-	
-	if (Input.is_action_just_pressed("Attack")) or (Input.is_action_pressed("Attack")):
-		if is_attacking:
-			if can_chain:
-				if stamina > 0:
-					queued_attack = true
-		else:
-			start_attack()
-	
-	if health <= 0:
-		death_screen.show()
-		%Bars.hide()
-		player_weapon.hide()
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-		Engine.time_scale = 0.05
-		if Input.is_action_just_pressed("Restart"):
-			Engine.time_scale = 1
-			get_tree().reload_current_scene()
-	
-	health_bar.size.x = clamp(lerp(health_bar.size.x, health*2, .1), 0, max_health*2)
-	
-	if stamina < max_stamina:
-		if can_attack == true:
-			if stamina_just_used == false:
-				var regened_stamina = stamina_regen_rate * delta
-				stamina += regened_stamina
-				stamina = min(stamina, max_stamina)
-	stamina_bar.size.x = clamp(lerp(stamina_bar.size.x, stamina*2, .1), 0, max_stamina*2)
-	
-	
-	_handle_ground_physics()
-	_headbob_effect(delta)
-	if Input.is_action_just_pressed("Inventory"):
-		if inventory.visible:
-			inventory.hide()
-		elif inventory.hidden:
-			inventory.display_inventory()
-	debug_text.text = str(player_weapon.weapon_name)
-	match current_state:
-		State.IDLE:
-			debug_text_2.text = "IDLE"
-		State.WALKING:
-			debug_text_2.text = "WALKING"
-		State.SPRINTING:
-			debug_text_2.text = "SPRINTING"
-	_walking_sfx_manager()
-	move_and_slide()
+		# Handle jump.
+		if Input.is_action_just_pressed("Jump") and is_on_floor():
+			if inventory.has("Wings"):
+				jump_velocity = 5.5
+			velocity.y = jump_velocity
+		
+		if (Input.is_action_just_pressed("Attack")) or (Input.is_action_pressed("Attack")):
+			if is_attacking:
+				if can_chain:
+					if stamina > 0:
+						queued_attack = true
+			else:
+				start_attack()
+		
+		if health <= 0:
+			death_screen.show()
+			%Bars.hide()
+			player_weapon.hide()
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+			Engine.time_scale = 0.05
+			if Input.is_action_just_pressed("Restart"):
+				Engine.time_scale = 1
+				get_tree().reload_current_scene()
+		
+		health_bar.size.x = clamp(lerp(health_bar.size.x, health*2, .1), 0, max_health*2)
+		
+		if stamina < max_stamina:
+			if can_attack == true:
+				if stamina_just_used == false:
+					var regened_stamina = stamina_regen_rate * delta
+					stamina += regened_stamina
+					stamina = min(stamina, max_stamina)
+		stamina_bar.size.x = clamp(lerp(stamina_bar.size.x, stamina*2, .1), 0, max_stamina*2)
+		
+		if can_climb:
+			if Input.is_action_pressed("Forward"):
+				self.position.y += 10 * delta
+		
+		_handle_ground_physics()
+		_headbob_effect(delta)
+		if Input.is_action_just_pressed("Inventory"):
+			if inventory.visible:
+				inventory.hide()
+			elif inventory.hidden:
+				inventory.display_inventory()
+		_walking_sfx_manager()
+		move_and_slide()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
 		paused = !paused
 		if paused:
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+			can_control = false
 		else:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+			can_control = true
 	
 
 		
@@ -181,7 +181,10 @@ func start_attack():
 	adjust_stamina(weapon_damage) 
 
 func take_damage(damage : float) -> void:
-	health -= damage
+	if inventory.has("Rat Armor"):
+		health -= damage/2
+	else:
+		health -= damage
 	player_hurt_sfx.play()
 	damage_indicator.fade_out()
 
@@ -237,6 +240,9 @@ func pickup_item(item: Loot):
 		player_weapon.weapon_data = item
 		player_weapon.load_weapon()
 		weapon_damage = item.attack_damage
+	if item.name == "Health Potion":
+		health += 10
+		inventory.remove_item("Health Potion")
 
 func _on_hitbox_area_entered(area: Area3D) -> void:
 	if area.is_in_group("Enemy"):
@@ -261,20 +267,19 @@ func _handle_ground_physics():
 		if Input.is_action_pressed("Forward"):
 			velocity.x = direction.x * WALK_SPEED
 			velocity.z = direction.z * WALK_SPEED
-			if is_on_floor():
-				is_walking = true
-				current_state = State.WALKING
-				if Input.is_action_pressed("Sprint"):
-					if stamina > 0:
-						current_state = State.SPRINTING
-						walk_sfx.pitch_scale = 1.2
-						velocity.x = direction.x * SPRINT_SPEED
-						velocity.z = direction.z * SPRINT_SPEED
-						adjust_stamina(.5)
-					else:
-						walk_sfx.pitch_scale = 0.8
+			is_walking = true
+			current_state = State.WALKING
+			if Input.is_action_pressed("Sprint"):
+				if stamina > 0:
+					current_state = State.SPRINTING
+					walk_sfx.pitch_scale = 1.2
+					velocity.x = direction.x * SPRINT_SPEED
+					velocity.z = direction.z * SPRINT_SPEED
+					adjust_stamina(.5)
 				else:
 					walk_sfx.pitch_scale = 0.8
+			else:
+				walk_sfx.pitch_scale = 0.8
 			if Input.is_action_just_pressed("Backward"):
 				velocity.x = move_toward(velocity.x, 0, WALK_SPEED)
 				velocity.z = move_toward(velocity.z, 0, WALK_SPEED)
@@ -316,3 +321,63 @@ func _on_pressure_plate_body_entered(body: Node3D) -> void:
 
 func open_door():
 	print("The way has opened.")
+	
+func handle_gravity(delta:float)->void:
+	if not is_on_floor():
+		if inventory.has("Wings"):
+			if Input.is_action_pressed("Crouch"):
+				velocity += get_gravity() * delta
+			else: velocity += get_gravity() * delta * .1
+		else:
+			velocity += get_gravity() * delta
+			if !can_climb:
+				if fall_damage_timer.is_stopped():
+					fall_damage_timer.start()
+		is_walking = false
+	else:
+		fall_damage_timer.stop()
+
+func _on_fall_damage_timer_timeout() -> void:
+	while not is_on_floor():
+		await get_tree().physics_frame
+	
+	take_damage(1000)
+
+
+func _on_play_pressed() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	can_control = true
+	bars.show()
+	main_menu.queue_free()
+
+
+func _on_quit_pressed() -> void:
+	get_tree().quit()
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	if body.is_in_group("Player"):
+		if inventory.has("Elevator Key"):
+			win_con.victory_check(true)
+			await get_tree().create_timer(3).timeout
+			bars.hide()
+			win_screen.show()
+			await get_tree().create_timer(5).timeout
+			get_tree().reload_current_scene()
+
+			# FIX THE BUG WHERE YOU CAN"T PRESS R TO RESTART
+		else:
+			win_con.victory_check(false)
+			debug_text.text = "You need a key."
+		
+	
+
+
+func _on_ladder_body_entered(body: Node3D) -> void:
+	if body.is_in_group("Player"):
+		can_climb = true
+		
+
+
+func _on_ladder_body_exited(body: Node3D) -> void:
+	if body.is_in_group("Player"):
+		can_climb = false

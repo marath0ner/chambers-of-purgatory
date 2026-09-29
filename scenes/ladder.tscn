@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://c11idtrkmgd4n"]
+
+[ext_resource type="Script" uid="uid://8b3eu82otc1b" path="res://scenes/ladder.gd" id="1_ku54x"]
+[ext_resource type="PackedScene" uid="uid://blg6xxotsypn6" path="res://glb/ladder.glb" id="1_xb1tl"]
+[ext_resource type="Material" uid="uid://bd4qxigcs8qd5" path="res://textures/WhiteWalls.tres" id="2_ku54x"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n815g"]
+size = Vector3(0.35266113, 2, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5wthp"]
+size = Vector3(0.08618164, 1.9888916, 1)
+
+[node name="Ladder" type="Node3D" unique_id=59870548]
+script = ExtResource("1_ku54x")
+
+[node name="ladder" parent="." unique_id=2085161917 instance=ExtResource("1_xb1tl")]
+
+[node name="Cube" parent="ladder" index="0" unique_id=476572343]
+surface_material_override/0 = ExtResource("2_ku54x")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1112097081]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=2047345520]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.015808105, 1.0040057, 0)
+shape = SubResource("BoxShape3D_n815g")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1475236959]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1044723401]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0015869141, 0.9993286, 0)
+shape = SubResource("BoxShape3D_5wthp")
+
+[editable path="ladder"]

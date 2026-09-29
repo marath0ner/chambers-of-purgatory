@@ -13,6 +13,8 @@ func activate():
 		starting_pos = self.global_position
 		tween.tween_property(self, "global_position", starting_pos + offset, .8)
 		audio_stream_player_3d.play()
+		#if self.name == "PressurePlate"
+		print(self.name)
 		provoke_ratti()
 
 func provoke_ratti():

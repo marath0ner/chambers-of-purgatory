@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="LootTable" format=3 uid="uid://1gjl1k61f41t"]
+
+[ext_resource type="Script" uid="uid://qfipytwtag60" path="res://scripts/LootTable.gd" id="1_07g8j"]
+[ext_resource type="Script" uid="uid://cprftlgm6te84" path="res://scripts/Loot.gd" id="2_jkdbq"]
+[ext_resource type="Resource" uid="uid://bc2l7iy5wclbo" path="res://LootItems/health_potion.tres" id="3_6o16t"]
+[ext_resource type="Resource" uid="uid://bbaa6u3aanlem" path="res://LootItems/mondo_hammer.tres" id="4_r8lmv"]
+[ext_resource type="Resource" uid="uid://cpjk0tyqwxjfp" path="res://LootItems/RatArmor.tres" id="5_t2d2c"]
+[ext_resource type="Resource" uid="uid://87uaq30ocrpf" path="res://LootItems/Wings.tres" id="6_0k2km"]
+
+[resource]
+script = ExtResource("1_07g8j")
+name = "chest_table"
+table = Dictionary[ExtResource("2_jkdbq"), int]({
+ExtResource("3_6o16t"): 3,
+ExtResource("4_r8lmv"): 3,
+ExtResource("5_t2d2c"): 2,
+ExtResource("6_0k2km"): 2
+})
+metadata/_custom_type_script = "uid://qfipytwtag60"

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://4xqba3dcji31"
-path="res://.godot/imported/barred_gate.glb-e518a3568ce9d566c3e26329a4775f13.scn"
+uid="uid://br61ybyuoyo57"
+path="res://.godot/imported/brick_hammer.glb-35336ee4af2e248495ad1de2cf26bb92.scn"
 
 [deps]
 
-source_file="res://scenes/barred_gate.glb"
-dest_files=["res://.godot/imported/barred_gate.glb-e518a3568ce9d566c3e26329a4775f13.scn"]
+source_file="res://glb/brick_hammer.glb"
+dest_files=["res://.godot/imported/brick_hammer.glb-35336ee4af2e248495ad1de2cf26bb92.scn"]
 
 [params]
 
@@ -19,7 +19,7 @@ nodes/root_script=null
 mesh_library/use_node_names_as_mesh_names=false
 array_mesh/deduplicate_surfaces=true
 nodes/apply_root_scale=true
-nodes/root_scale=1.0
+nodes/root_scale=0.1
 nodes/import_as_skeleton_bones=false
 nodes/use_name_suffixes=true
 nodes/use_node_type_suffixes=true
@@ -42,4 +42,4 @@ materials/extract_path=""
 _subresources={}
 gltf/naming_version=2
 gltf/embedded_image_handling=1
-gltf/texture_map_mode=1
+gltf/texture_map_mode=0

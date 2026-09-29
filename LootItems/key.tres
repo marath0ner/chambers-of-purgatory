@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Loot" format=3 uid="uid://307tnn07ai55"]
+
+[ext_resource type="Script" uid="uid://cprftlgm6te84" path="res://scripts/Loot.gd" id="1_l0ono"]
+
+[resource]
+script = ExtResource("1_l0ono")
+name = "Key"
+type = 2
+rarity = 2
+description = "Unlocks a chest"
+metadata/_custom_type_script = "uid://cprftlgm6te84"

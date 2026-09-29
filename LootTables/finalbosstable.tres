@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="LootTable" format=3 uid="uid://du7bhcntqh02c"]
+
+[ext_resource type="Script" uid="uid://qfipytwtag60" path="res://scripts/LootTable.gd" id="1_np8hm"]
+[ext_resource type="Script" uid="uid://cprftlgm6te84" path="res://scripts/Loot.gd" id="2_jmcq5"]
+[ext_resource type="Resource" uid="uid://cjf5ud1056ho4" path="res://LootItems/ElevatorKey.tres" id="3_jmcq5"]
+
+[resource]
+script = ExtResource("1_np8hm")
+name = "Final_Boss_Table"
+table = Dictionary[ExtResource("2_jmcq5"), int]({
+ExtResource("3_jmcq5"): 1
+})
+metadata/_custom_type_script = "uid://qfipytwtag60"

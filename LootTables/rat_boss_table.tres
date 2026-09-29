@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://qfipytwtag60" path="res://scripts/LootTable.gd" id="1_m058s"]
 [ext_resource type="Script" uid="uid://cprftlgm6te84" path="res://scripts/Loot.gd" id="2_umjx0"]
-[ext_resource type="Resource" uid="uid://cpjk0tyqwxjfp" path="res://LootItems/PoopArmor.tres" id="3_3rkxx"]
+[ext_resource type="Resource" uid="uid://cpjk0tyqwxjfp" path="res://LootItems/RatArmor.tres" id="3_3rkxx"]
 [ext_resource type="Resource" uid="uid://87uaq30ocrpf" path="res://LootItems/Wings.tres" id="4_cg4wh"]
 
 [resource]

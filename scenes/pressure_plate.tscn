@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://d1iwp2blf36jv"]
 
 [ext_resource type="Material" uid="uid://bd4qxigcs8qd5" path="res://textures/WhiteWalls.tres" id="1_ct5vs"]
-[ext_resource type="Script" uid="uid://dt2oey72gpgnk" path="res://scenes/pressure_plate.gd" id="1_xtofl"]
+[ext_resource type="Script" uid="uid://dt2oey72gpgnk" path="res://scripts/pressure_plate.gd" id="1_xtofl"]
 [ext_resource type="AudioStream" uid="uid://wjq0jkvd0owc" path="res://sounds/sfx/Socapex - small knock.wav" id="3_r34r6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_n815g"]

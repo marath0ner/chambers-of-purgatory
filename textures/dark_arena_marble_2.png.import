@@ -2,21 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmcenj0mx8gx5"
-path.s3tc="res://.godot/imported/fat_rattus_rat_fur.jpg-53e986ff8927591e19441b4403da5d34.s3tc.ctex"
-path.etc2="res://.godot/imported/fat_rattus_rat_fur.jpg-53e986ff8927591e19441b4403da5d34.etc2.ctex"
+uid="uid://b1hbascc2oicv"
+path.s3tc="res://.godot/imported/dark_arena_marble_2.png-a2caa810df75a6830e6fc6f414cf15e2.s3tc.ctex"
+path.etc2="res://.godot/imported/dark_arena_marble_2.png-a2caa810df75a6830e6fc6f414cf15e2.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "aa189af4261840d47d2044bef05529bc"
+"md5": "05130f82f5b7a57517bb359eea1a87c4"
 }
 
 [deps]
 
-source_file="res://textures/fat_rattus_rat_fur.jpg"
-dest_files=["res://.godot/imported/fat_rattus_rat_fur.jpg-53e986ff8927591e19441b4403da5d34.s3tc.ctex", "res://.godot/imported/fat_rattus_rat_fur.jpg-53e986ff8927591e19441b4403da5d34.etc2.ctex"]
+source_file="res://textures/dark_arena_marble_2.png"
+dest_files=["res://.godot/imported/dark_arena_marble_2.png-a2caa810df75a6830e6fc6f414cf15e2.s3tc.ctex", "res://.godot/imported/dark_arena_marble_2.png-a2caa810df75a6830e6fc6f414cf15e2.etc2.ctex"]
 
 [params]
 

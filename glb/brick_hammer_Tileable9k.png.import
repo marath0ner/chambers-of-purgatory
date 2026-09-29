@@ -2,21 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmcenj0mx8gx5"
-path.s3tc="res://.godot/imported/fat_rattus_rat_fur.jpg-53e986ff8927591e19441b4403da5d34.s3tc.ctex"
-path.etc2="res://.godot/imported/fat_rattus_rat_fur.jpg-53e986ff8927591e19441b4403da5d34.etc2.ctex"
+uid="uid://du34me6n76gro"
+path.s3tc="res://.godot/imported/brick_hammer_Tileable9k.png-666b90e85a3a02ce40e9c17e5cae659b.s3tc.ctex"
+path.etc2="res://.godot/imported/brick_hammer_Tileable9k.png-666b90e85a3a02ce40e9c17e5cae659b.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "aa189af4261840d47d2044bef05529bc"
+"md5": "2f657886300cb9a6c1ac04c97e408711"
 }
 
 [deps]
 
-source_file="res://textures/fat_rattus_rat_fur.jpg"
-dest_files=["res://.godot/imported/fat_rattus_rat_fur.jpg-53e986ff8927591e19441b4403da5d34.s3tc.ctex", "res://.godot/imported/fat_rattus_rat_fur.jpg-53e986ff8927591e19441b4403da5d34.etc2.ctex"]
+source_file="res://glb/brick_hammer_Tileable9k.png"
+dest_files=["res://.godot/imported/brick_hammer_Tileable9k.png-666b90e85a3a02ce40e9c17e5cae659b.s3tc.ctex", "res://.godot/imported/brick_hammer_Tileable9k.png-666b90e85a3a02ce40e9c17e5cae659b.etc2.ctex"]
 
 [params]
 

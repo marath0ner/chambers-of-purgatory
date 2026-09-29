@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dk2uvis5vdqta"]
 
-[ext_resource type="PackedScene" uid="uid://4xqba3dcji31" path="res://scenes/barred_gate.glb" id="1_g3n7j"]
+[ext_resource type="PackedScene" uid="uid://4xqba3dcji31" path="res://glb/barred_gate.glb" id="1_g3n7j"]
+[ext_resource type="AudioStream" uid="uid://cjegs4xu5wcmy" path="res://sounds/sfx/stone_door.ogg" id="2_2asgt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5wthp"]
 size = Vector3(0.30029297, 0.90000004, 0.049230956)
@@ -14,3 +15,10 @@ size = Vector3(0.30029297, 0.90000004, 0.049230956)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=132838756]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.005126953, 0.45000002, 0.003387455)
 shape = SubResource("BoxShape3D_5wthp")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=765047076]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+stream = ExtResource("2_2asgt")
+volume_db = 9.771
+unit_size = 25.25
+pitch_scale = 1.05

@@ -4,18 +4,20 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://waet0cms123x"
-path="res://.godot/imported/dark_arena.glb-6bef3e23ca595fba1a36379bd050327e.scn"
+path="res://.godot/imported/dark_arena.glb-f17f50ff6e6f3a99052aace68157e486.scn"
 
 [deps]
 
-source_file="res://scenes/dark_arena.glb"
-dest_files=["res://.godot/imported/dark_arena.glb-6bef3e23ca595fba1a36379bd050327e.scn"]
+source_file="res://glb/dark_arena.glb"
+dest_files=["res://.godot/imported/dark_arena.glb-f17f50ff6e6f3a99052aace68157e486.scn"]
 
 [params]
 
 nodes/root_type=""
 nodes/root_name=""
 nodes/root_script=null
+mesh_library/use_node_names_as_mesh_names=false
+array_mesh/deduplicate_surfaces=true
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false
@@ -40,3 +42,4 @@ materials/extract_path=""
 _subresources={}
 gltf/naming_version=2
 gltf/embedded_image_handling=1
+gltf/texture_map_mode=0

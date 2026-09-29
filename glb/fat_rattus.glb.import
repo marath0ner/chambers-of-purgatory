@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://b63pin6xv5egu"
-path="res://.godot/imported/fat_rattus.glb-a4600e20a621d0ae51d5cae1840f59bd.scn"
+path="res://.godot/imported/fat_rattus.glb-6b8bc83ef4d4bd9e871115c1d54eb6ac.scn"
 
 [deps]
 
-source_file="res://scenes/fat_rattus.glb"
-dest_files=["res://.godot/imported/fat_rattus.glb-a4600e20a621d0ae51d5cae1840f59bd.scn"]
+source_file="res://glb/fat_rattus.glb"
+dest_files=["res://.godot/imported/fat_rattus.glb-6b8bc83ef4d4bd9e871115c1d54eb6ac.scn"]
 
 [params]
 

@@ -1,15 +1,15 @@
 [gd_resource type="Resource" script_class="Loot" format=3 uid="uid://cpjk0tyqwxjfp"]
 
-[ext_resource type="PackedScene" uid="uid://b63pin6xv5egu" path="res://scenes/fat_rattus.glb" id="1_1lcef"]
+[ext_resource type="PackedScene" uid="uid://b63pin6xv5egu" path="res://glb/fat_rattus.glb" id="1_1lcef"]
 [ext_resource type="Script" uid="uid://cprftlgm6te84" path="res://scripts/Loot.gd" id="1_6cytv"]
 [ext_resource type="Texture2D" uid="uid://meam7n51glx6" path="res://textures/Placeholder_textures/logo_512x512/logo_red_512x512.png" id="2_1lcef"]
 
 [resource]
 script = ExtResource("1_6cytv")
-name = "Poop Armor"
+name = "Rat Armor"
 type = 1
 rarity = 4
-description = "Sometimes... I dream about CheehC"
+description = "Armor of theouter Ratti"
 model = ExtResource("1_1lcef")
 texture = ExtResource("2_1lcef")
 metadata/_custom_type_script = "uid://cprftlgm6te84"

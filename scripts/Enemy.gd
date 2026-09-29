@@ -49,13 +49,34 @@ func _physics_process(delta : float):
 	
 		# Get the direction to the next path point, smoothly adjust rotation
 			var desired_direction = (next_pos - global_position).normalized()
-			var desired_rotation = atan2(-desired_direction.x, -desired_direction.z)
+			var desired_rotation_y = atan2(-desired_direction.x, -desired_direction.z)
 			direction = direction.lerp(desired_direction, 5.0 * delta)
-			rotation.y = lerp_angle(rotation.y, desired_rotation, 5.0 * delta)
+			rotation.y = lerp_angle(rotation.y, desired_rotation_y, 5.0 * delta)
 
+	
+	
 	ray_cast_3d.target_position = ray_cast_3d.to_local(player_character.global_position)
 	ray_cast_3d.force_raycast_update()
 	try_chase()
+	
+	if is_on_floor():
+		var floor_normal = get_floor_normal()
+		var slope_angle = atan2(
+			-floor_normal.z,
+			floor_normal.y)
+		
+		if player_character.position.y < self.position.y:
+			rotation.x = lerp_angle(
+				rotation.x,
+				slope_angle,
+				2.0 * delta)
+		elif player_character.position.y > self.position.y:
+			rotation.x = lerp_angle(
+				rotation.x,
+				-slope_angle,
+				2.0 * delta)
+				
+	# HACK / TODO : this code is fucked, it only works if the slope is in a certain direction. rewrite
 	
 	if health <= 0:
 		

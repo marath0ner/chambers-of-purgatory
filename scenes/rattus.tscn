@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c0w4kj2uspw8f"]
 
-[ext_resource type="PackedScene" uid="uid://b63pin6xv5egu" path="res://scenes/fat_rattus.glb" id="1_5r8un"]
+[ext_resource type="PackedScene" uid="uid://b63pin6xv5egu" path="res://glb/fat_rattus.glb" id="1_5r8un"]
 [ext_resource type="Script" uid="uid://dm67crgugf0r5" path="res://scripts/Enemy.gd" id="1_kji86"]
 [ext_resource type="AudioStream" uid="uid://dwv80ewuqhf6a" path="res://sounds/sfx/dog-growl.wav" id="3_jv6us"]
 [ext_resource type="AudioStream" uid="uid://b373ti6pcy8ia" path="res://sounds/sfx/dog-snarl.wav" id="4_jvtuq"]
@@ -29,6 +29,7 @@ stream_1/stream = ExtResource("4_jvtuq")
 stream_2/stream = ExtResource("5_jdshe")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_n815g"]
+height = 7.0
 radius = 7.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_qmawe"]
@@ -59,6 +60,7 @@ gradient = SubResource("Gradient_jdshe")
 viewport_path = NodePath("SubViewport")
 
 [node name="Rattus" type="CharacterBody3D" unique_id=890867727 groups=["Enemy"]]
+floor_max_angle = 1.0471976
 script = ExtResource("1_kji86")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1820945536]
@@ -97,9 +99,10 @@ unit_size = 15.0
 stream = ExtResource("6_v2qpm")
 
 [node name="DetectionArea" type="Area3D" parent="." unique_id=761462943]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionArea" unique_id=374119063]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 shape = SubResource("CylinderShape3D_n815g")
 
 [node name="RatWalkSFX" type="AudioStreamPlayer3D" parent="." unique_id=144716720]

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Loot" format=3 uid="uid://cjf5ud1056ho4"]
+
+[ext_resource type="Script" uid="uid://cprftlgm6te84" path="res://scripts/Loot.gd" id="1_i8fep"]
+
+[resource]
+script = ExtResource("1_i8fep")
+name = "Elevator Key"
+type = 2
+rarity = 3
+description = "Wins the game fucko"
+metadata/_custom_type_script = "uid://cprftlgm6te84"

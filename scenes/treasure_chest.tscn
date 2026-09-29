@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://biuwc48imfi2x"]
+
+[ext_resource type="Script" uid="uid://cfnw2isk34m4x" path="res://treasure_chest.gd" id="1_ybsko"]
+[ext_resource type="PackedScene" uid="uid://lgbk37pekd7b" path="res://glb/treasure_chest.glb" id="2_4lyqs"]
+[ext_resource type="PackedScene" uid="uid://cy353wg7smsfn" path="res://scenes/loot_drop.tscn" id="2_tymi3"]
+[ext_resource type="AudioStream" uid="uid://lcp8qa4enfqe" path="res://sounds/sfx/Chest Creak.wav" id="3_4lyqs"]
+[ext_resource type="Resource" uid="uid://csc120sl23b2u" path="res://LootTables/rat_boss_table.tres" id="3_kb1f1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n815g"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5wthp"]
+size = Vector3(1.5, 1.5, 1.5)
+
+[node name="Node3D" type="Node3D" unique_id=762523864]
+script = ExtResource("1_ybsko")
+loot_scene = ExtResource("2_tymi3")
+loot_table = ExtResource("3_kb1f1")
+
+[node name="treasure_chest" parent="." unique_id=1719030071 instance=ExtResource("2_4lyqs")]
+
+[node name="Cube_001" parent="treasure_chest" index="1" unique_id=1052508043]
+transform = Transform3D(0.5, 0, 0, 0, 0.4999993, 0.00083194056, 0, -0.00083194056, 0.4999993, 0, 0.5548678, -0.5)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="treasure_chest" unique_id=825899699]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="treasure_chest/StaticBody3D" unique_id=1160817597]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5035917, 0)
+shape = SubResource("BoxShape3D_n815g")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="treasure_chest" unique_id=1435915968]
+stream = ExtResource("3_4lyqs")
+pitch_scale = 2.01
+
+[node name="Area3D" type="Area3D" parent="treasure_chest" unique_id=1623722252]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="treasure_chest/Area3D" unique_id=2038378500]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8509765, 0)
+shape = SubResource("BoxShape3D_5wthp")
+
+[node name="Control" type="Control" parent="." unique_id=574578133]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="Control" unique_id=471336948]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[connection signal="body_entered" from="treasure_chest/Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="treasure_chest/Area3D" to="." method="_on_area_3d_body_exited"]
+
+[editable path="treasure_chest"]

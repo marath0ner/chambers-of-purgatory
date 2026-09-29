@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bfx60lj8dbx43"]
 
-[ext_resource type="PackedScene" uid="uid://bw31hj56jl8dn" path="res://scenes/brazier.glb" id="1_d1r1w"]
+[ext_resource type="PackedScene" uid="uid://bw31hj56jl8dn" path="res://glb/brazier.glb" id="1_d1r1w"]
 [ext_resource type="Texture2D" uid="uid://dtxl3j3bxekq8" path="res://textures/muzzleflash.png" id="2_1k8ij"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1k8ij"]
